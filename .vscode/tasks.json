@@ -1,0 +1,10 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    { "label": "Khesht: install", "type": "npm", "script": "install:ci", "problemMatcher": [] },
+    { "label": "Khesht: run locally", "type": "npm", "script": "local", "problemMatcher": [], "presentation": { "reveal": "always", "panel": "dedicated" } },
+    { "label": "Khesht: live editing", "type": "npm", "script": "dev", "problemMatcher": [] },
+    { "label": "Khesht: reset local password", "type": "npm", "script": "auth:reset", "problemMatcher": [] },
+    { "label": "Khesht: typecheck", "type": "npm", "script": "typecheck", "problemMatcher": "$tsc" }
+  ]
+}

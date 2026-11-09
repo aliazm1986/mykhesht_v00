@@ -1,0 +1,3 @@
+import {getCurrentActor} from '@/lib/control';
+import {listProjectMetrics,projectMetric} from '@/lib/project-metrics';
+export async function GET(request:Request){const actor=await getCurrentActor();if(!actor)return Response.json({error:'ورود لازم است.'},{status:401});const slug=new URL(request.url).searchParams.get('project');if(slug){const metric=await projectMetric(actor,slug);return metric?Response.json({metrics:[metric]},{headers:{'cache-control':'no-store'}}):Response.json({error:'پرونده در دسترس نیست.'},{status:404});}return Response.json({metrics:await listProjectMetrics(actor)},{headers:{'cache-control':'no-store'}});}

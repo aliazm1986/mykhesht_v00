@@ -1,0 +1,10 @@
+import { mkdir, copyFile, readdir } from 'node:fs/promises';
+const root = new URL('../', import.meta.url);
+const target = new URL('public/ocr/', root);
+await mkdir(new URL('core/', target), { recursive: true });
+await mkdir(new URL('lang/', target), { recursive: true });
+await copyFile(new URL('node_modules/tesseract.js/dist/worker.min.js', root), new URL('worker.min.js', target));
+await copyFile(new URL('node_modules/tesseract.js/LICENSE.md', root), new URL('LICENSE-tesseract.md', target));
+const core = new URL('node_modules/tesseract.js-core/', root);
+for (const file of await readdir(core)) if (/\.wasm(?:\.js)?$/.test(file) || file === 'LICENSE') await copyFile(new URL(file, core), new URL(`core/${file}`, target));
+for (const language of ['fas', 'eng']) await copyFile(new URL(`node_modules/@tesseract.js-data/${language}/4.0.0/${language}.traineddata.gz`, root), new URL(`lang/${language}.traineddata.gz`, target));

@@ -1,0 +1,37 @@
+import * as market from "@/app/api/market/route";
+import * as password from '@/app/api/auth/password/route';
+import * as accountSecurity from '@/app/api/admin/local-accounts/security/route';
+import * as readiness from '@/app/api/admin/readiness/route';
+import * as caseHistory from "@/app/api/project-control/history/route";
+import * as caseReport from "@/app/api/project-control/report/route";
+import * as caseQueue from "@/app/api/project-control/queue/route";
+import * as reviewRules from "@/app/api/review-rules/route";
+import * as wealthMetrics from "@/app/api/wealth/metrics/route";
+import * as localSession from "@/app/api/auth/session/route";
+import * as localAccounts from "@/app/api/admin/local-accounts/route";
+import{requestContext}from"./request-context";
+import{guardApiRequest}from"@/lib/api-security";
+import * as projects from"@/app/api/projects/route";
+import * as analysis from"@/app/api/analysis/route";
+import * as documents from"@/app/api/data-room/documents/route";
+import * as download from"@/app/api/data-room/documents/[id]/route";
+import * as extraction from"@/app/api/data-room/documents/[id]/extraction/route";
+import * as review from"@/app/api/data-room/documents/[id]/review/route";
+import * as reports from"@/app/api/sample-reports/route";
+import * as members from "@/app/api/project-control/members/route";
+import * as artifacts from "@/app/api/project-control/artifacts/route";
+import * as notes from "@/app/api/pilot/records/route";
+import * as stages from"@/app/api/project-control/stages/route";
+import * as roles from"@/app/api/control/roles/route";
+import * as support from"@/app/api/support/tickets/route";
+import * as member from"@/app/api/member/route";
+import * as operations from"@/app/api/admin/operations/route";
+import * as backups from"@/app/api/admin/backups/route";
+import * as maintenance from "@/app/api/internal/maintenance/route";
+import * as wealth from"@/app/api/wealth/scenarios/route";
+const routes:Array<[RegExp,object]>=[[/^\/api\/auth\/password$/,password],[/^\/api\/admin\/local-accounts\/security$/,accountSecurity],[/^\/api\/admin\/readiness$/,readiness],[/^\/api\/project-control\/history$/,caseHistory],[/^\/api\/project-control\/report$/,caseReport],[/^\/api\/project-control\/queue$/,caseQueue],[/^\/api\/review-rules$/,reviewRules],[/^\/api\/wealth\/metrics$/,wealthMetrics],[/^\/api\/auth\/session$/,localSession],[/^\/api\/admin\/local-accounts$/,localAccounts],[/^\/api\/project-control\/members$/,members],[/^\/api\/project-control\/artifacts$/,artifacts],[/^\/api\/pilot\/records$/,notes],[/^\/api\/internal\/maintenance$/,maintenance],[/^\/api\/projects$/,projects],[/^\/api\/analysis$/,analysis],[/^\/api\/data-room\/documents$/,documents],[/^\/api\/data-room\/documents\/([^/]+)\/extraction$/,extraction],[/^\/api\/data-room\/documents\/([^/]+)\/review$/,review],[/^\/api\/data-room\/documents\/([^/]+)$/,download],[/^\/api\/sample-reports$/,reports],[/^\/api\/project-control\/stages$/,stages],[/^\/api\/control\/roles$/,roles],[/^\/api\/support\/tickets$/,support],[/^\/api\/member$/,member],[/^\/api\/admin\/operations$/,operations],[/^\/api\/admin\/backups$/,backups],[/^\/api\/wealth\/scenarios$/,wealth],[/^\/api\/market$/,market]];
+export default{async fetch(request:Request){return requestContext.run(request.headers,async()=>{
+  const blocked=await guardApiRequest(request);if(blocked)return blocked;
+  for(const[pattern,module]of routes){const match=new URL(request.url).pathname.match(pattern);if(!match)continue;const handler=(module as Record<string,(req:Request,context:{params:Promise<{id:string}>})=>Promise<Response>>)[request.method];if(!handler)return new Response("Method not allowed",{status:405});try{return await handler(request,{params:Promise.resolve({id:match[1]??""})});}catch(error){console.error(error);return Response.json({error:String(error)},{status:500});}}
+  return new Response("Not found",{status:404});
+});}};

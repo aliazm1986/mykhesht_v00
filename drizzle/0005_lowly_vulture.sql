@@ -1,0 +1,1 @@
+ALTER TABLE `document_extractions` ADD `metadata_json` text;

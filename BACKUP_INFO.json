@@ -1,0 +1,16 @@
+{
+  "project": "خشت | پایلوت بسته",
+  "project_id": "appgprj_6ac3808812408191af3371550f263c81",
+  "source_commit": "03d7b17f08c73d0fb42a34bcd66a01b16f06301a",
+  "date": "2026-10-21",
+  "contents": "Source code, assets, migration files, dependency lockfile, tests, operation and restoration documentation",
+  "excludes": [
+    "Production database and uploaded documents",
+    "Runtime secrets and account sessions",
+    "node_modules and generated build output"
+  ],
+  "recorded_validation": {
+    "automated_checks_passed": 276,
+    "note": "Recorded results for this source version; browser OCR and complete private browser workflow remain unverified."
+  }
+}

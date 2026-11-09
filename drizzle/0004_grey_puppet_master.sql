@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX `case_stage_decisions_one_active_unique` ON `case_stage_decisions` (`case_id`) WHERE "case_stage_decisions"."state" = 'active';

@@ -1,0 +1,17 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "files.watcherExclude": {
+    "**/dist/**": true,
+    "**/.wrangler/**": true,
+    "**/.sites-runtime/**": true,
+    "**/public/ocr/**": true,
+    "**/node_modules/**": true
+  },
+  "search.exclude": {
+    "**/dist": true,
+    "**/.wrangler": true,
+    "**/.sites-runtime": true,
+    "**/public/ocr": true
+  }
+}

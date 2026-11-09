@@ -1,0 +1,9 @@
+<svg width="112" height="32" viewBox="0 0 112 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(2, 1) scale(0.065)">
+    <polygon fill="#BC4A3C" points="230.5,11 81,248 230.5,333" />
+    <polygon fill="#9C3C34" points="230.5,11 380,248 230.5,333" />
+    <polygon fill="#AA4A44" points="81,248 230.5,333 230.5,448" />
+    <polygon fill="#80302A" points="380,248 230.5,333 230.5,448" />
+  </g>
+  <text x="39" y="22" fill="#212529" font-family="Arial, sans-serif" font-size="18" font-weight="700">خشت</text>
+</svg>

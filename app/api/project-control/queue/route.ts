@@ -1,0 +1,6 @@
+import {eq} from 'drizzle-orm';
+import {getDb} from '@/db';
+import {projectCases,caseStageDecisions} from '@/db/schema';
+import {getCurrentActor,allowedProjectSlugs,pilotStages} from '@/lib/control';
+import {listProjectDefinitions} from '@/lib/projects-server';
+export async function GET(){const actor=await getCurrentActor();if(!actor)return Response.json({error:'ورود لازم است.'},{status:401});const allowed=await allowedProjectSlugs(actor),entries=(await listProjectDefinitions()).filter(e=>allowed===null||allowed.includes(e.definition.slug));const projects=[];for(const e of entries){const c=(await getDb().select().from(projectCases).where(eq(projectCases.projectSlug,e.definition.slug)).limit(1))[0],stages=c?await getDb().select().from(caseStageDecisions).where(eq(caseStageDecisions.caseId,c.id)):[],current=stages.find(s=>s.state==='active')??stages.find(s=>s.state==='blocked');projects.push({slug:e.definition.slug,name:e.definition.name,status:c?.status==='pilot_complete'?'مسیر آزمایشی تکمیل شده':current?pilotStages.find(s=>s.key===current.stageKey)?.label:'در انتظار شروع',updatedAt:c?.updatedAt??null,passed:stages.filter(s=>s.state==='passed').length,total:9});}return Response.json({projects},{headers:{'cache-control':'no-store'}});}

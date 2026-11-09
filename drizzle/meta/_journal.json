@@ -1,0 +1,90 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1792235972867,
+      "tag": "0000_organic_living_lightning",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1792407593476,
+      "tag": "0001_flashy_tomorrow_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1792411868981,
+      "tag": "0002_freezing_albert_cleary",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1792480365629,
+      "tag": "0003_petite_ben_parker",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1792480783755,
+      "tag": "0004_grey_puppet_master",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1792481737911,
+      "tag": "0005_lowly_vulture",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1792481870425,
+      "tag": "0006_messy_machine_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "6",
+      "when": 1792490937253,
+      "tag": "0007_slimy_marvel_boy",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "6",
+      "when": 1792495010868,
+      "tag": "0008_acoustic_kylun",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "6",
+      "when": 1792495232834,
+      "tag": "0009_brainy_slapstick",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "6",
+      "when": 1792571999892,
+      "tag": "0010_service_and_recovery",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "6",
+      "when": 1794052500000,
+      "tag": "0011_secondary_market",
+      "breakpoints": true
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    { "name": "Khesht — local server", "type": "node-terminal", "request": "launch", "command": "npm run local", "cwd": "${workspaceFolder}" }
+  ]
+}
